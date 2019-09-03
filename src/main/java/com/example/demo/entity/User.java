@@ -2,15 +2,17 @@ package com.example.demo.entity;
 
 
 import com.example.demo.plugins.UserPasswordEncrypt;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 @Entity
-public class TUser extends  BaseEntity{
-
+public class User extends  BaseEntity {
 
     @Column(unique = true,nullable = false)
     private String username;
@@ -30,37 +32,22 @@ public class TUser extends  BaseEntity{
     @Column(nullable = false,unique = true)
     private String email;
 
-    private Integer grade;
 
+    @Column(nullable = false)
+    private boolean sex;
 
+    @Column(nullable = false)
+    private boolean grade;
 
+//    @OneToMany(targetEntity = UserOrder.class)
+//    private UserOrder userOrder
 
-    @OneToMany(targetEntity = Schedule.class)
-    private List<Schedule> scheduleList;
+    @OneToMany(targetEntity = Thing.class)
+    private  List<Thing> thingList;
 
+    @OneToMany(targetEntity = OrderForm.class)
+    private  List<OrderForm> orderList;
 
-
-    @OneToMany(targetEntity = inkscreen.class)
-    private  List<inkscreen> inkscreens;
-
-
-
-    public List<Schedule> getScheduleList() {
-        return scheduleList;
-    }
-
-    public void setScheduleList(List<Schedule> scheduleList) {
-        this.scheduleList = scheduleList;
-    }
-
-
-    public List<inkscreen> getInkscreens() {
-        return inkscreens;
-    }
-
-    public void setInkscreens(List<inkscreen> inkscreens) {
-        this.inkscreens = inkscreens;
-    }
 
     public String getUsername() {
         return username;
@@ -110,11 +97,19 @@ public class TUser extends  BaseEntity{
         this.email = email;
     }
 
-    public Integer getGrade() {
+    public boolean isSex() {
+        return sex;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
+
+    public boolean isGrade() {
         return grade;
     }
 
-    public void setGrade(Integer grade) {
+    public void setGrade(boolean grade) {
         this.grade = grade;
     }
 
@@ -141,17 +136,62 @@ public class TUser extends  BaseEntity{
         }
         return str;
     }
+//
+//    public List<UserOrder> getUserOrderList() {
+//        return userOrderList;
+//    }
+//
+//    public void setUserOrderList(List<UserOrder> userOrderList) {
+//        this.userOrderList = userOrderList;
+//    }
+
+    @JsonBackReference
+    public List<Thing> getThingList() {
+        return thingList;
+    }
+
+    public void setThingList(List<Thing> thingList) {
+        this.thingList = thingList;
+    }
+
+//    public List<Order> getOrderList() {
+//        return orderList;
+//    }
+//
+//    public void setOrderList(List<Order> orderList) {
+//        this.orderList = orderList;
+//    }
+
+
+//    public List<Order> getOrderList() {
+//        return orderList;
+//    }
+//
+//    public void setOrderList(List<Order> orderList) {
+//        this.orderList = orderList;
+//    }
+
+    public List<OrderForm> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<OrderForm> orderList) {
+        this.orderList = orderList;
+    }
+
     @Override
     public String toString() {
-        return "TUser{" +
+        return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", tel='" + tel + '\'' +
                 ", wechat='" + wechat + '\'' +
                 ", qq='" + qq + '\'' +
                 ", email='" + email + '\'' +
+                ", sex=" + sex +
                 ", grade=" + grade +
-                ", scheduleList=" + scheduleList +
+                ", thingList=" + thingList +
+                ", orderList=" + orderList +
                 '}';
     }
 }

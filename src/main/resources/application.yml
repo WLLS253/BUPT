@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/buptcms?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/buptc?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
     password: wu19990306
 

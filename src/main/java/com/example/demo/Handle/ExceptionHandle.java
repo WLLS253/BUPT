@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class ExceptionHandle {
 
-
     private final static Logger logger = LoggerFactory.getLogger(Exception.class);
 
     @ExceptionHandler(value = Exception.class)

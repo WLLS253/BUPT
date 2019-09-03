@@ -8,6 +8,5 @@ import java.util.List;
 public interface TokenersRepository extends JpaRepository<Tokeners,Long> {
 
     public List<Tokeners> findByUuid(String uu);
-
     public List<Tokeners>findAllByToken(String token);
 }

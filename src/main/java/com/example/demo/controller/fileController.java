@@ -34,7 +34,6 @@ public class fileController {
 
     }
 
-
     @PostMapping(value = "/test/email")
     public Result testemail(@RequestParam("email") String email){
         TestJax testJax=new TestJax();

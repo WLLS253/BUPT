@@ -23,13 +23,13 @@ public class HttpAspect {
 
 
     public  final static Logger logger= LoggerFactory.getLogger(HttpAspect.class);
-    @Before("execution(public * com.example.demo.controller.TUserController.addUser(..))")
-    public  void log(){
-       logger.info("hhhh");
-    }
+//    @Before("execution(public * com.example.demo.controller.TUserController.addUser(..))")
+//    public  void log(){
+//       logger.info("hhhh");
+//    }
 
 
-    @Pointcut("execution(public * com.example.demo.controller.TUserController.*(..))&&execution(public * com.example.demo.controller.DaoController.*(..))")
+    @Pointcut("execution(public * com.example.demo.controller.*.*(..))")
     public  void logtest(){
 
     }
@@ -54,15 +54,15 @@ public class HttpAspect {
          logger.info("args={}",joinPoint.getArgs());
 
         logger.info("dobefore");
-        String url=request.getRequestURI();
-        if(!(url.equals("/t/login")||url.equals("/t/user/add"))) {
-            String token=request.getHeader("token");
-            logger.info("token={}",token);
-            if(token!=null){
-                String uuid=tokenService.validateToken(token,24*36000L);
-                if(uuid==null)throw new LoginException(ExceptionEnums.LOGIN_ERROR);
-            }
-        }
+//        String url=request.getRequestURI();
+////        if(!(url.equals("/t/login")||url.equals("/t/user/add"))) {
+////            String token=request.getHeader("token");
+////            logger.info("token={}",token);
+////            if(token!=null){
+////                String uuid=tokenService.validateToken(token,24*36000L);
+////                if(uuid==null)throw new LoginException(ExceptionEnums.LOGIN_ERROR);
+////            }
+////        }
     }
 
 
